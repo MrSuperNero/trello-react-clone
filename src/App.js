@@ -1,8 +1,8 @@
 import React from 'react';
 // import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
-import Header from './Header';
-import TaskList from './TaskList';
-import * as Lists from './todoListData';
+import Header from './components/Header';
+import TaskList from './components/TaskList';
+import * as Lists from './data/todoListData';
 
 export default class App extends React.Component {
 

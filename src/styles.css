@@ -135,9 +135,9 @@ h3 {
     align-items: center;
     background: transparent;
     padding: 17px 10px;
-    cursor: pointer;
     border: 3px dashed #808080;
     color: #808080;
+    cursor: pointer;
 }
 
 .add-task:hover {
