@@ -68,4 +68,4 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
 # trello-clone
 
-Hosted on netlify (neo-todo-react.netlify.app)
+Hosted on netlify (https://neo-todo-react.netlify.app)
