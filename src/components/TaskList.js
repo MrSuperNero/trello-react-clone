@@ -111,7 +111,7 @@ export default class TaskList extends React.Component {
                     :
                     null
                 }
-                <button className="add-task" onClick={this.displayNewTask}>+ Add Task</button>
+                <button className="add-task" onClick={this.displayNewTask}>+ Add Task?</button>
             </div>
         );
     }
