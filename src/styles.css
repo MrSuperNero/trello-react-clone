@@ -170,9 +170,10 @@ h3 {
 }
 
 .new-input input[type=text] {
-    padding: 10px 13px;
+    padding: 9px 13px;
     width: 70%;
     margin-right: -5px;
+    border: 1px solid #b1b1b1;
     border-top-left-radius: 3px;
     border-bottom-left-radius: 3px;
 }
