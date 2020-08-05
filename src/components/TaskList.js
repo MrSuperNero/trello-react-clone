@@ -85,14 +85,23 @@ export default class TaskList extends React.Component {
                 <h3>{this.props.title}</h3>
                 {todoList}
                 {this.state.addActive ? 
-                    <form name="task" ref={this.listRef} className="new-input" onSubmit={this.handleSubmit, this.displayNewTask} >
+                    <form 
+                        name="task"
+                        ref={this.listRef} 
+                        className="new-input" 
+                        onSubmit={this.handleSubmit} >
                         <input 
                             type="text" 
                             placeholder="Enter new task..." 
                             name="task" 
                             onChange={this.handleChangeValue}  
                             value={this.state.value} />
-                        <button type="submit" value="Submit" onClick={this.handleAdd}>
+                        <button 
+                            type="submit" 
+                            value="Submit" 
+                            onClick={() => {
+                                this.handleAdd();
+                                this.displayNewTask();}}>
                             <FontAwesome
                                 className="super-crazy-colors"
                                 name="check"
