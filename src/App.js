@@ -17,14 +17,36 @@ export default class App extends React.Component {
 
         for (const key in Lists) {
             taskLists.push(Lists[key]);
-            console.log(Lists[key]);
         }
 
         this.setState({
             lists: taskLists,
         });
-        
     }
+
+    // // figure out way to add new tasklist if empty one at end is filled up
+
+    // componentWillUnmount() {
+
+    //     if (!this.state.emptyPresent) {
+    //         this.setState(prevState => {
+    //             const addedEmpty = prevState.lists.concat({
+    //                 name: "Empty List",
+    //                 numTasks: 0,
+    //                 data: [],
+    //             });
+
+    //             return ({
+    //                 emptyPresent: true,
+    //                 lists: addedEmpty,
+    //             })
+    //         })
+    //     }
+
+    //     if (this.state.lists[this.state.lists.length - 1].data !== []) {
+    //         this.setState({emptyPresent: false});
+    //     }
+    // }
 
 
     render() {
