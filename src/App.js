@@ -4,27 +4,51 @@ import Header from './components/Header';
 import TaskList from './components/TaskList';
 import * as Lists from './data/todoListData';
 
-export default function App() {
-
-    const taskLists = []; // array of components
-
-    // create list of components of data from each list in todoListData
-    for (const key in Lists) {
-        taskLists.push(<TaskList 
-                            key={key} 
-                            numTasks={Lists[key].numTasks} 
-                            data={Lists[key].data} 
-                            title={Lists[key].name} />);
+export default class App extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            lists: [],
+        }
     }
 
-    return (
-        <div>
-            <Header />
-            <div className="bkgrnd">
-                <div className="task-view">
-                    {taskLists}
+    componentWillMount() {
+        const taskLists = [];
+
+        for (const key in Lists) {
+            taskLists.push(Lists[key]);
+            console.log(Lists[key]);
+        }
+
+        this.setState({
+            lists: taskLists,
+        });
+        
+    }
+
+
+    render() {
+        const outputLists = this
+                            .state
+                            .lists
+                            .map
+                            (list => 
+                                <TaskList 
+                                    key={list.name} 
+                                    numTasks={list.numTasks} 
+                                    data={list.data} 
+                                    title={list.name} />); // array of components
+
+
+        return (
+            <div>
+                <Header />
+                <div className="bkgrnd">
+                    <div className="task-view">
+                        {outputLists}
+                    </div>
                 </div>
             </div>
-        </div>
-    )
+        )
+    }
 }
