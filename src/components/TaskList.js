@@ -65,9 +65,6 @@ export default class TaskList extends React.Component {
     displayNewTask() {
         this.setState(prevState => {
             return {
-                value: prevState.value,
-                numTasks: prevState.numTasks,
-                todos: prevState.todos,
                 addActive: !prevState.addActive,
             }
         })
@@ -88,7 +85,6 @@ export default class TaskList extends React.Component {
                 {this.state.addActive ? 
                     <form 
                         name="task"
-                        ref={this.listRef} 
                         className="new-input" 
                         onSubmit={this.handleSubmit} >
                         <input 
@@ -104,7 +100,6 @@ export default class TaskList extends React.Component {
                                 this.handleAdd();
                                 this.displayNewTask();}}>
                             <FontAwesome
-                                className="super-crazy-colors"
                                 name="check"
                             />
                         </button>

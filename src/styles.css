@@ -23,31 +23,59 @@ header {
     z-index: 3;
 }
 
+.title-wrapper, nav, .img-wrapper {
+    display: flex;
+    width: 350px;
+}
+
+.title-wrapper {
+    justify-content: center;
+}
+
+.title-wrapper h1 {
+    text-align: center;
+}
+
+.img-wrapper {
+    justify-content: flex-end;
+}
+
 header > *:hover {
     cursor: default;
 }
 
-header button, h1 {
+header nav button, h1 {
     padding: 10px 0;
 }
 
-header button {
+header nav button {
     background: transparent;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
     padding: 0 15px;
     border: none;
     cursor: pointer;
     font-family: monospace;
     font-size: 1.1em;
-    color: rgb(190, 190, 190);
+    color: #bebebe;
 }
 
-header button:focus {
+header nav button:focus {
     outline: none;
 }
 
-header button:hover, h1:hover {
+header nav button:hover, h1:hover {
     color: white;
     text-shadow: white 0 0 10px;
+}
+
+header nav button #plus {
+    height: 0.8em;
+}
+
+header nav button p {
+    margin-left: 5px;
 }
 
 header img {
@@ -77,11 +105,6 @@ header img:hover {
     overflow: scroll;
 }
 
-h3 {
-    margin: 0 30px;
-    font-size: 1.4em;
-}
-
 .task-list {
     display: inline-block;
     background: #dbdbdb;
@@ -96,6 +119,11 @@ h3 {
 
 .task-list:nth-last-child(1) {
     margin-right: 0;
+}
+
+.task-list h3 {
+    margin: 0 30px;
+    font-size: 1.4em;
 }
 
 .task, .add-task {
@@ -201,10 +229,6 @@ h3 {
 
 /* parallax scrolling for desktops */
 @media all and (min-width: 1024px) {
-    header h1 {
-        margin-right: 100px;
-    }
-
     .bkgrnd:before {
         background-attachment: fixed;
     }

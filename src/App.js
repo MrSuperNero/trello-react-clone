@@ -8,11 +8,17 @@ export default class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            value: '',
             lists: [],
+            addList: false,
         }
+        this.handleChangeValue = this.handleChangeValue.bind(this);
+        this.willAddList = this.willAddList.bind(this);
+        this.handleAddList = this.handleAddList.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
         const taskLists = [];
 
         for (const key in Lists) {
@@ -24,30 +30,34 @@ export default class App extends React.Component {
         });
     }
 
-    // // figure out way to add new tasklist if empty one at end is filled up
+    handleChangeValue(event) {
+        this.setState({ value: event.target.value });
+    }
 
-    // componentWillUnmount() {
+    willAddList() {
+        this.setState({
+            addList: true,
+        })
+    }
 
-    //     if (!this.state.emptyPresent) {
-    //         this.setState(prevState => {
-    //             const addedEmpty = prevState.lists.concat({
-    //                 name: "Empty List",
-    //                 numTasks: 0,
-    //                 data: [],
-    //             });
+    handleAddList(list) {
+        this.setState(prevState => {
+            const addedEmpty = prevState.lists.concat({
+                name: prevState.value,
+                numTasks: 0,
+                data: [],
+            });
 
-    //             return ({
-    //                 emptyPresent: true,
-    //                 lists: addedEmpty,
-    //             })
-    //         })
-    //     }
+            return ({
+                lists: addedEmpty,
+                addList: false,
+            })
+        });
+    }
 
-    //     if (this.state.lists[this.state.lists.length - 1].data !== []) {
-    //         this.setState({emptyPresent: false});
-    //     }
-    // }
-
+    handleSubmit(event) {
+        event.preventDefault();
+    }
 
     render() {
         const outputLists = this
@@ -61,10 +71,16 @@ export default class App extends React.Component {
                                     data={list.data} 
                                     title={list.name} />); // array of components
 
-
         return (
             <div>
-                <Header />
+                <Header handleAdd={this.willAddList}/>
+                {this.state.addList ? 
+                    <form onSubmit={this.handleSubmit}>
+                        <input type="text" name="list" placeholder="Enter name of new list" onChange={this.handleChangeValue}/>
+                        <button type="submit" value="Submit" onClick={this.handleAddList}>Submit</button>
+                    </form> 
+                    :
+                    null}
                 <div className="bkgrnd">
                     <div className="task-view">
                         {outputLists}
