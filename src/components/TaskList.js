@@ -6,9 +6,9 @@ import FontAwesome from 'react-fontawesome';
 export default class TaskList extends React.Component {
     constructor(props) {
         super(props);
-        this.listRef = React.createRef();
         this.state = {
             value: '',
+            title: this.props.title,
             numTasks: this.props.numTasks,
             todos: this.props.data,
             addActive: false,
@@ -50,6 +50,7 @@ export default class TaskList extends React.Component {
 
             return {
                 value: '',
+                title: prevState.title,
                 numTasks: prevState.numTasks + 1,
                 todos: updatedTodos,
                 addActive: prevState.addActive,
@@ -82,7 +83,7 @@ export default class TaskList extends React.Component {
 
         return (
             <div className="task-list">
-                <h3>{this.props.title}</h3>
+                <h3>{this.state.title}</h3>
                 {todoList}
                 {this.state.addActive ? 
                     <form 
