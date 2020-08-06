@@ -40,7 +40,7 @@ export default class App extends React.Component {
         })
     }
 
-    handleAddList(list) {
+    handleAddList() {
         this.setState(prevState => {
             const addedEmpty = prevState.lists.concat({
                 name: prevState.value,
@@ -76,11 +76,20 @@ export default class App extends React.Component {
                 <Header handleAdd={this.willAddList}/>
                 {this.state.addList ? 
                     <form onSubmit={this.handleSubmit}>
-                        <input type="text" name="list" placeholder="Enter name of new list" onChange={this.handleChangeValue}/>
-                        <button type="submit" value="Submit" onClick={this.handleAddList}>Submit</button>
+                        <input 
+                            type="text" 
+                            name="list" 
+                            placeholder="Enter name of new list" 
+                            onChange={this.handleChangeValue}/>
+
+                        <button 
+                            type="submit" 
+                            value="Submit" 
+                            onClick={this.handleAddList}>Submit</button>
                     </form> 
                     :
-                    null}
+                    null
+                }
                 <div className="bkgrnd">
                     <div className="task-view">
                         {outputLists}
