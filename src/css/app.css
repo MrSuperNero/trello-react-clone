@@ -1,0 +1,85 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url(../assets/background.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: monospace;
+}
+
+.new-list {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: rgba(0,0,0,.32);
+    color: white;
+    padding: 0 10px 10px 10px;
+}
+
+.new-list input[type="text"] {
+    padding: 7px;
+    font-size: 1.05em;
+    width: 300px;
+    border: none;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+.new-list input[type="text"]:focus {
+    outline: none;
+}
+
+.new-list button {
+    padding: 7px;
+    font-size: 1.05em;
+    background-color: white;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border: none;
+    cursor: pointer;
+}
+
+.new-list button:hover {
+    background-color: black;
+    color: white;
+}
+
+.new-list button:focus {
+    outline: none;
+}
+
+.bkgrnd {
+    height: 94.3vh;
+    width: 100%;
+    padding: 3vh;
+}
+
+.task-view {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: row;
+    height: 100%;
+    width: auto;
+    overflow: scroll;
+}
+
+/* stop parallax for all tablets and mobile devices */
+@media all and (max-width: 1023px) {
+    .bkgrnd:before {
+        background-attachment: scroll;
+    }
+}
+
+/* parallax scrolling for desktops */
+@media all and (min-width: 1024px) {
+    .bkgrnd:before {
+        background-attachment: fixed;
+    }
+}

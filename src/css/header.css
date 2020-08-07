@@ -1,0 +1,76 @@
+header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(0,0,0,.32);
+    font-family: monospace;
+    color: rgb(190, 190, 190);
+    z-index: 3;
+}
+
+.title-wrapper, nav, .img-wrapper {
+    display: flex;
+    width: 350px;
+}
+
+.title-wrapper {
+    justify-content: center;
+}
+
+.title-wrapper h1 {
+    text-align: center;
+}
+
+.img-wrapper {
+    justify-content: flex-end;
+}
+
+header > *:hover {
+    cursor: default;
+}
+
+header nav button, h1 {
+    padding: 10px 0;
+}
+
+header nav button {
+    background: transparent;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    padding: 0 15px;
+    border: none;
+    cursor: pointer;
+    font-family: monospace;
+    font-size: 1.4em;
+    color: #bebebe;
+}
+
+header nav button:focus {
+    outline: none;
+}
+
+header nav button:hover, h1:hover {
+    color: white;
+    text-shadow: white 0 0 10px;
+}
+
+header nav button #plus {
+    height: 1em;
+}
+
+header nav button p {
+    margin-left: 10px;
+}
+
+header img {
+    height: 40px;
+    width: auto;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+
+header img:hover {
+    box-shadow: white 0 0 10px;
+}

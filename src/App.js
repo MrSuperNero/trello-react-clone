@@ -3,6 +3,9 @@ import React from 'react';
 import Header from './components/Header';
 import TaskList from './components/TaskList';
 import * as Lists from './data/todoListData';
+import FontAwesome from 'react-fontawesome';
+import './css/app.css'
+
 
 export default class App extends React.Component {
     constructor(props) {
@@ -49,7 +52,8 @@ export default class App extends React.Component {
             });
 
             return ({
-                lists: addedEmpty,
+                value: '',
+                lists: (prevState.value !== '' ? addedEmpty : prevState.lists),
                 addList: false,
             })
         });
@@ -69,27 +73,36 @@ export default class App extends React.Component {
                                     key={list.name} 
                                     numTasks={list.numTasks} 
                                     data={list.data} 
-                                    title={list.name} />); // array of components
+                                    title={list.name} />); 
+
 
         return (
             <div>
                 <Header handleAdd={this.willAddList}/>
+            
                 {this.state.addList ? 
-                    <form onSubmit={this.handleSubmit}>
+                    <form className="new-list" onSubmit={this.handleSubmit}>
                         <input 
                             type="text" 
                             name="list" 
-                            placeholder="Enter name of new list" 
+                            maxlength="20" 
+                            placeholder="Enter name of new list (20 chars)" 
                             onChange={this.handleChangeValue}/>
 
                         <button 
                             type="submit" 
                             value="Submit" 
-                            onClick={this.handleAddList}>Submit</button>
+                            onClick={this.handleAddList}>
+
+                            <FontAwesome
+                            name="check"/>
+
+                        </button>
                     </form> 
                     :
                     null
                 }
+
                 <div className="bkgrnd">
                     <div className="task-view">
                         {outputLists}

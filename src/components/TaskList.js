@@ -1,6 +1,7 @@
 import React from 'react';
 import TodoItem from './TodoItem';
 import FontAwesome from 'react-fontawesome';
+import '../css/taskList.css'
 
 
 export default class TaskList extends React.Component {

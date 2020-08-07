@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from '../assets/favicon-192.png';
 import FontAwesome from 'react-fontawesome';
+import '../css/header.css'
 
 
 export default function Header(props) {

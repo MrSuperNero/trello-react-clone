@@ -1,0 +1,114 @@
+.task-list {
+    display: inline-block;
+    background: #dbdbdb;
+    border-radius: 3px;
+    min-width: 300px;
+    padding: 10px 0;
+    margin-right: 20px;
+    z-index: 2;
+    opacity: 0.9;
+    box-shadow: #5a5a5a 1px 2px 5px;
+}
+
+.task-list:nth-last-child(1) {
+    margin-right: 0;
+}
+
+.task-list h3 {
+    margin: 0 30px;
+    font-size: 1.4em;
+}
+
+.task, .add-task {
+    font-family: monospace;
+    font-size: 1.2em;
+    width: 80%;
+    height: 100%;
+    margin: 10px auto;
+    border-radius: 4px;
+}
+
+.task {
+    padding: 10px;
+    background: white;
+    box-shadow: #999898 0px 1px 3px;
+}
+
+.task p {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
+    margin: 0 10%;
+    transition: 0.3s all ease;
+}
+
+.task input[type=checkbox] {
+    margin-right: 20px;
+}
+
+.task input[type=checkbox]:focus {
+    outline: none;
+}
+
+.add-task {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    padding: 17px 10px;
+    border: 3px dashed #808080;
+    color: #808080;
+    cursor: pointer;
+}
+
+.add-task:hover {
+    background: #c5c5c5;
+    border: 3px solid transparent;
+}
+
+.add-task:active {
+    background: #b3b3b3;
+    border: 3px solid transparent;
+}
+
+.add-task:focus {
+    outline: none;
+}
+
+.new-input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.new-input > * {
+    border: none;
+}
+
+.new-input > *:focus {
+    outline: none;
+}
+
+.new-input input[type=text] {
+    padding: 9px 13px;
+    width: 70%;
+    margin-right: -5px;
+    border: 1px solid #b1b1b1;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+.new-input button {
+    padding: 5.5px 7px;
+    font-size: 1.3em;
+    background-color: #b1b1b1;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    cursor: pointer;
+}
+
+.new-input button:hover {
+    background-color: black;
+    color: white;
+}
