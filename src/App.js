@@ -2,7 +2,7 @@ import React from 'react';
 // import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import Header from './components/Header';
 import TaskList from './components/TaskList';
-import * as Lists from './data/todoListData';
+// import * as Lists from './data/todoListData';    // fake data
 import FontAwesome from 'react-fontawesome';
 import './css/app.css'
 
@@ -21,17 +21,18 @@ export default class App extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    UNSAFE_componentWillMount() {
-        const taskLists = [];
+    // load fake data
+    // UNSAFE_componentWillMount() {
+    //     const taskLists = [];
 
-        for (const key in Lists) {
-            taskLists.push(Lists[key]);
-        }
+    //     for (const key in Lists) {
+    //         taskLists.push(Lists[key]);
+    //     }
 
-        this.setState({
-            lists: taskLists,
-        });
-    }
+    //     this.setState({
+    //         lists: taskLists,
+    //     });
+    // }
 
     handleChangeValue(event) {
         this.setState({ value: event.target.value });
