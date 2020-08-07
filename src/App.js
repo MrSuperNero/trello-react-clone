@@ -3,7 +3,7 @@ import React from 'react';
 import Header from './components/Header';
 import TaskList from './components/TaskList';
 import * as Lists from './data/todoListData';    // fake data
-import FontAwesome from 'react-fontawesome';
+// import FontAwesome from 'react-fontawesome';
 import './css/app.css'
 
 
@@ -54,7 +54,8 @@ export default class App extends React.Component {
 
             return ({
                 value: '',
-                lists: (prevState.value !== '' ? addedEmpty : prevState.lists),
+                // lists: (prevState.value !== '' ? addedEmpty : prevState.lists),
+                lists: addedEmpty,
                 addList: false,
             })
         });
@@ -79,9 +80,9 @@ export default class App extends React.Component {
 
         return (
             <div>
-                <Header handleAdd={this.willAddList}/>
+                <Header handleAdd={this.handleAddList}/>
             
-                {this.state.addList ? 
+                {/* {this.state.addList ? 
                     <form className="new-list" onSubmit={this.handleSubmit}>
                         <input 
                             type="text" 
@@ -102,7 +103,7 @@ export default class App extends React.Component {
                     </form> 
                     :
                     null
-                }
+                } */}
 
                 <div className="bkgrnd">
                     <div className="task-view">
