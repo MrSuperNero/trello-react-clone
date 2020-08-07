@@ -64,7 +64,7 @@
 }
 
 .task {
-    padding: 10px;
+    padding: 15px;
     background: white;
     box-shadow: #999898 0px 1px 3px;
 }
@@ -73,7 +73,8 @@
     overflow-wrap: break-word;
     word-wrap: break-word;
     hyphens: auto;
-    margin: 0 10%;
+    margin-left: 30px;
+    margin-top: -20px;
     transition: 0.3s all ease;
 }
 
