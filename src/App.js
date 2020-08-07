@@ -2,7 +2,7 @@ import React from 'react';
 // import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import Header from './components/Header';
 import TaskList from './components/TaskList';
-import * as Lists from './data/todoListData';    // fake data
+// import * as Lists from './data/todoListData';    // fake data
 // import FontAwesome from 'react-fontawesome';
 import './css/app.css'
 
@@ -13,36 +13,36 @@ export default class App extends React.Component {
         this.state = {
             value: '',
             lists: [],
-            addList: false,
+            // addList: false,
         }
         this.handleChangeValue = this.handleChangeValue.bind(this);
-        this.willAddList = this.willAddList.bind(this);
+        // this.willAddList = this.willAddList.bind(this);
         this.handleAddList = this.handleAddList.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    // load fake data
-    UNSAFE_componentWillMount() {
-        const taskLists = [];
+    // // load fake data
+    // UNSAFE_componentWillMount() {
+    //     const taskLists = [];
 
-        for (const key in Lists) {
-            taskLists.push(Lists[key]);
-        }
+    //     for (const key in Lists) {
+    //         taskLists.push(Lists[key]);
+    //     }
 
-        this.setState({
-            lists: taskLists,
-        });
-    }
+    //     this.setState({
+    //         lists: taskLists,
+    //     });
+    // }
 
     handleChangeValue(event) {
         this.setState({ value: event.target.value });
     }
 
-    willAddList() {
-        this.setState({
-            addList: true,
-        })
-    }
+    // willAddList() {
+    //     this.setState({
+    //         addList: true,
+    //     })
+    // }
 
     handleAddList() {
         this.setState(prevState => {
@@ -50,13 +50,14 @@ export default class App extends React.Component {
                 name: prevState.value,
                 numTasks: 0,
                 data: [],
+                editTitle: true,
             });
 
             return ({
                 value: '',
                 // lists: (prevState.value !== '' ? addedEmpty : prevState.lists),
                 lists: addedEmpty,
-                addList: false,
+                addList: true,
             })
         });
     }
@@ -75,7 +76,8 @@ export default class App extends React.Component {
                                     key={list.name} 
                                     numTasks={list.numTasks} 
                                     data={list.data} 
-                                    title={list.name} />); 
+                                    title={list.name}
+                                    editTitle={list.editTitle} />); 
 
 
         return (

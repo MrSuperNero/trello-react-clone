@@ -11,7 +11,7 @@ export default class TaskList extends React.Component {
             taskValue: '',
             title: this.props.title,
             titleValue: this.props.title,
-            editTitle: false,
+            editTitle: this.props.editTitle,
             numTasks: this.props.numTasks,
             todos: this.props.data,
             addActive: false,
