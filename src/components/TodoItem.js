@@ -1,4 +1,5 @@
 import React from 'react'
+import {useSpring, animated} from 'react-spring'
 
 export default function TodoItem(props) {
     const completedItem = {
@@ -6,15 +7,17 @@ export default function TodoItem(props) {
         color: "#bbbbbb",
     }
 
+    const enter = useSpring({opacity: 1, from: {opacity: 0}})
+
     return (
-        <div className="task">
+        <animated.div style={enter} className="task">
             <input 
                 type="checkbox" 
                 checked={props.task.completed} 
                 onChange={() => props.handleChange(props.task.id)}
             /> 
             <p style={props.task.completed ? completedItem : null}>{props.task.text}</p>
-        </div>
+        </animated.div>
     )
 }
 

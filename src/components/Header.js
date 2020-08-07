@@ -22,7 +22,9 @@ export default function Header(props) {
             </div>
 
             <div className="img-wrapper">
-                <img src={logo} alt="logo" />
+                <a href="www.github.com/MrSuperNero">
+                    <img src={logo} alt="logo" />
+                </a>
             </div>
         </header>
     );

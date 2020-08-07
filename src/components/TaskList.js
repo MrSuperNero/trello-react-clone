@@ -1,6 +1,7 @@
 import React from 'react';
 import TodoItem from './TodoItem';
 import FontAwesome from 'react-fontawesome';
+import {Spring} from 'react-spring/renderprops'
 import '../css/taskList.css'
 
 
@@ -107,69 +108,75 @@ export default class TaskList extends React.Component {
             />);
 
         return (
-            <div className="task-list">
+            <Spring
+                from={{ opacity: 0 }}
+                to={{ opacity: 1 }}>
+                {enter => 
+                <div style={enter} className="task-list">
 
-                <div className="title">
-                    {this.state.editTitle ? 
+                    <div className="title">
+                        {this.state.editTitle ? 
+                            <form 
+                                id="list-form"
+                                name="task"
+                                className="input-form" 
+                                onSubmit={this.handleSubmit} >
+                                <input 
+                                    type="text" 
+                                    placeholder="Enter new title..." 
+                                    name="title" 
+                                    maxLength="15"
+                                    onChange={this.handleEditTitle}  
+                                    value={this.state.titleValue} />
+                                <button 
+                                    type="submit" 
+                                    value="Submit" 
+                                    onClick={this.doneEditTitle}>
+                                    <FontAwesome
+                                        name="check"
+                                    />
+                                </button>
+                            </form>
+                            :
+                            <h3>{this.state.title}</h3>
+                        }
+                        <button onClick={this.willEditTitle}>
+                            <FontAwesome name="edit" id="editIcon" />
+                        </button>
+                    </div>
+
+                    {todoList}
+                    
+                    {this.state.addActive ? 
                         <form 
-                            id="list-form"
+                            id="task-form"
                             name="task"
                             className="input-form" 
                             onSubmit={this.handleSubmit} >
                             <input 
                                 type="text" 
-                                placeholder="Enter new title..." 
-                                name="title" 
-                                maxLength="15"
-                                onChange={this.handleEditTitle}  
-                                value={this.state.titleValue} />
+                                placeholder="Enter new task..." 
+                                name="task" 
+                                onChange={this.handleChangeValue}  
+                                value={this.state.taskValue} />
                             <button 
                                 type="submit" 
                                 value="Submit" 
-                                onClick={this.doneEditTitle}>
+                                onClick={() => {
+                                    this.handleAddTask();
+                                    this.displayNewTask();}}>
                                 <FontAwesome
                                     name="check"
                                 />
                             </button>
                         </form>
                         :
-                        <h3>{this.state.title}</h3>
+                        null
                     }
-                    <button onClick={this.willEditTitle}>
-                        <FontAwesome name="edit" id="editIcon" />
-                    </button>
+                    <button className="add-task" onClick={this.displayNewTask}>+ New Task</button>
                 </div>
-
-                {todoList}
-                
-                {this.state.addActive ? 
-                    <form 
-                        id="task-form"
-                        name="task"
-                        className="input-form" 
-                        onSubmit={this.handleSubmit} >
-                        <input 
-                            type="text" 
-                            placeholder="Enter new task..." 
-                            name="task" 
-                            onChange={this.handleChangeValue}  
-                            value={this.state.taskValue} />
-                        <button 
-                            type="submit" 
-                            value="Submit" 
-                            onClick={() => {
-                                this.handleAddTask();
-                                this.displayNewTask();}}>
-                            <FontAwesome
-                                name="check"
-                            />
-                        </button>
-                    </form>
-                    :
-                    null
                 }
-                <button className="add-task" onClick={this.displayNewTask}>+ New Task</button>
-            </div>
+                </Spring>
         );
     }
 }
