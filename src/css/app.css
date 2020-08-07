@@ -59,7 +59,7 @@ body {
 .bkgrnd {
     height: 94.3vh;
     width: 100%;
-    padding: 3vh;
+    padding: 5vh;
 }
 
 .task-view {
@@ -73,14 +73,14 @@ body {
 }
 
 /* stop parallax for all tablets and mobile devices */
-@media all and (max-width: 1023px) {
+@media screen and (max-width: 1023px) {
     .bkgrnd:before {
         background-attachment: scroll;
     }
 }
 
 /* parallax scrolling for desktops */
-@media all and (min-width: 1024px) {
+@media screen and (min-width: 1024px) {
     .bkgrnd:before {
         background-attachment: fixed;
     }

@@ -8,15 +8,20 @@ export default class TaskList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            value: '',
+            taskValue: '',
             title: this.props.title,
+            titleValue: this.props.title,
+            editTitle: false,
             numTasks: this.props.numTasks,
             todos: this.props.data,
             addActive: false,
         }; 
         this.handleComplete = this.handleComplete.bind(this);
-        this.handleAdd = this.handleAdd.bind(this);
+        this.handleAddTask = this.handleAddTask.bind(this);
         this.handleChangeValue = this.handleChangeValue.bind(this);
+        this.handleEditTitle = this.handleEditTitle.bind(this);
+        this.willEditTitle = this.willEditTitle.bind(this);
+        this.doneEditTitle = this.doneEditTitle.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.displayNewTask = this.displayNewTask.bind(this);
     }
@@ -38,19 +43,41 @@ export default class TaskList extends React.Component {
     }
 
     handleChangeValue(event) {
-        this.setState({ value: event.target.value });
+        this.setState({ taskValue: event.target.value });
     }
 
-    handleAdd(task) {
+    willEditTitle() {
+        this.setState({
+            editTitle: true,
+        });
+    }
+
+    handleEditTitle(event) {
+        this.setState({ 
+            titleValue: event.target.value,
+        });
+    }
+
+    doneEditTitle() {
+        this.setState(prevState => {
+            return {
+                title: prevState.titleValue,
+                editTitle: false,
+            }
+        });
+    }
+
+
+    handleAddTask(task) {
         this.setState(prevState => {
             const updatedTodos = prevState.todos.concat({
                 id: prevState.numTasks + 1,
-                text: prevState.value,
+                text: prevState.taskValue,
                 completed: false,
             });
 
             return {
-                value: '',
+                taskValue: '',
                 title: prevState.title,
                 numTasks: prevState.numTasks + 1,
                 todos: updatedTodos,
@@ -81,24 +108,57 @@ export default class TaskList extends React.Component {
 
         return (
             <div className="task-list">
-                <h3>{this.state.title}</h3>
+
+                <div className="title">
+                    {this.state.editTitle ? 
+                        <form 
+                            id="list-form"
+                            name="task"
+                            className="input-form" 
+                            onSubmit={this.handleSubmit} >
+                            <input 
+                                type="text" 
+                                placeholder="Enter new title..." 
+                                name="title" 
+                                maxLength="15"
+                                onChange={this.handleEditTitle}  
+                                value={this.state.titleValue} />
+                            <button 
+                                type="submit" 
+                                value="Submit" 
+                                onClick={this.doneEditTitle}>
+                                <FontAwesome
+                                    name="check"
+                                />
+                            </button>
+                        </form>
+                        :
+                        <h3>{this.state.title}</h3>
+                    }
+                    <button onClick={this.willEditTitle}>
+                        <FontAwesome name="edit" id="editIcon" />
+                    </button>
+                </div>
+
                 {todoList}
+                
                 {this.state.addActive ? 
                     <form 
+                        id="task-form"
                         name="task"
-                        className="new-input" 
+                        className="input-form" 
                         onSubmit={this.handleSubmit} >
                         <input 
                             type="text" 
                             placeholder="Enter new task..." 
                             name="task" 
                             onChange={this.handleChangeValue}  
-                            value={this.state.value} />
+                            value={this.state.taskValue} />
                         <button 
                             type="submit" 
                             value="Submit" 
                             onClick={() => {
-                                this.handleAdd();
+                                this.handleAddTask();
                                 this.displayNewTask();}}>
                             <FontAwesome
                                 name="check"

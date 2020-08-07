@@ -2,7 +2,7 @@ import React from 'react';
 // import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import Header from './components/Header';
 import TaskList from './components/TaskList';
-// import * as Lists from './data/todoListData';    // fake data
+import * as Lists from './data/todoListData';    // fake data
 import FontAwesome from 'react-fontawesome';
 import './css/app.css'
 
@@ -22,17 +22,17 @@ export default class App extends React.Component {
     }
 
     // load fake data
-    // UNSAFE_componentWillMount() {
-    //     const taskLists = [];
+    UNSAFE_componentWillMount() {
+        const taskLists = [];
 
-    //     for (const key in Lists) {
-    //         taskLists.push(Lists[key]);
-    //     }
+        for (const key in Lists) {
+            taskLists.push(Lists[key]);
+        }
 
-    //     this.setState({
-    //         lists: taskLists,
-    //     });
-    // }
+        this.setState({
+            lists: taskLists,
+        });
+    }
 
     handleChangeValue(event) {
         this.setState({ value: event.target.value });
@@ -86,8 +86,8 @@ export default class App extends React.Component {
                         <input 
                             type="text" 
                             name="list" 
-                            maxlength="20" 
-                            placeholder="Enter name of new list (20 chars)" 
+                            maxLength="15" 
+                            placeholder="Enter name of new list (15 chars)" 
                             onChange={this.handleChangeValue}/>
 
                         <button 
