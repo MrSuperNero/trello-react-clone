@@ -114,6 +114,12 @@ export default class TaskList extends React.Component {
                 {enter => 
                 <div style={enter} className="task-list">
 
+                    <div className="delete-list">
+                        <button>
+                            <FontAwesome name="remove" id="removeIcon" />
+                        </button>
+                    </div>
+
                     <div className="title">
                         {this.state.editTitle ? 
                             <form 
