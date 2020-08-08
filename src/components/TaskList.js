@@ -21,7 +21,7 @@ export default class TaskList extends React.Component {
         this.handleAddTask = this.handleAddTask.bind(this);
         this.handleChangeValue = this.handleChangeValue.bind(this);
         this.willEditTitle = this.willEditTitle.bind(this);
-        this.doneEditTitle = this.doneEditTitle.bind(this);
+        this.handleEditTitle = this.handleEditTitle.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.displayNewTask = this.displayNewTask.bind(this);
     }
@@ -55,7 +55,7 @@ export default class TaskList extends React.Component {
         });
     }
 
-    doneEditTitle() {
+    handleEditTitle() {
         this.setState(prevState => {
             return {
                 title: prevState.titleValue,
@@ -114,12 +114,6 @@ export default class TaskList extends React.Component {
                 {enter => 
                 <div style={enter} className="task-list">
 
-                    <div className="delete-list">
-                        <button>
-                            <FontAwesome name="remove" id="removeIcon" />
-                        </button>
-                    </div>
-
                     <div className="title">
                         {this.state.editTitle ? 
                             <form 
@@ -137,7 +131,7 @@ export default class TaskList extends React.Component {
                                 <button 
                                     type="submit" 
                                     value="Submit" 
-                                    onClick={this.doneEditTitle}>
+                                    onClick={this.handleEditTitle}>
                                     <FontAwesome
                                         name="check"
                                     />
