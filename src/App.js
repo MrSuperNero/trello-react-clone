@@ -11,11 +11,9 @@ export default class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            value: '',
             lists: [],
             addList: false,
         }
-        this.handleChangeValue = this.handleChangeValue.bind(this);
         this.willAddList = this.willAddList.bind(this);
         this.handleAddList = this.handleAddList.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -33,10 +31,6 @@ export default class App extends React.Component {
     //         lists: taskLists,
     //     });
     // }
-
-    handleChangeValue(event) {
-        this.setState({ value: event.target.value });
-    }
 
     willAddList() {
         this.setState({
@@ -82,29 +76,6 @@ export default class App extends React.Component {
         return (
             <div>
                 <Header handleAdd={this.handleAddList}/>
-            
-                {/* {this.state.addList ? 
-                    <form className="new-list" onSubmit={this.handleSubmit}>
-                        <input 
-                            type="text" 
-                            name="list" 
-                            maxLength="15" 
-                            placeholder="Enter name of new list (15 chars)" 
-                            onChange={this.handleChangeValue}/>
-
-                        <button 
-                            type="submit" 
-                            value="Submit" 
-                            onClick={this.handleAddList}>
-
-                            <FontAwesome
-                            name="check"/>
-
-                        </button>
-                    </form> 
-                    :
-                    null
-                } */}
 
                 <div className="bkgrnd">
                     <div className="task-view">
