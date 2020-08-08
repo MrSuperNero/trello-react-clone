@@ -109,8 +109,12 @@ export default class TaskList extends React.Component {
 
         return (
             <Spring
-                from={{ opacity: 0 }}
-                to={{ opacity: 1 }}>
+                from={{
+                    opacity: 0,
+                }}
+                to={{
+                    opacity: 1,
+                }}>
                 {enter => 
                 <div style={enter} className="task-list">
 

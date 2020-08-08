@@ -13,10 +13,10 @@ export default class App extends React.Component {
         this.state = {
             value: '',
             lists: [],
-            // addList: false,
+            addList: false,
         }
         this.handleChangeValue = this.handleChangeValue.bind(this);
-        // this.willAddList = this.willAddList.bind(this);
+        this.willAddList = this.willAddList.bind(this);
         this.handleAddList = this.handleAddList.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -38,11 +38,11 @@ export default class App extends React.Component {
         this.setState({ value: event.target.value });
     }
 
-    // willAddList() {
-    //     this.setState({
-    //         addList: true,
-    //     })
-    // }
+    willAddList() {
+        this.setState({
+            addList: true,
+        })
+    }
 
     handleAddList() {
         this.setState(prevState => {
