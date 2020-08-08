@@ -55,7 +55,6 @@ export default class App extends React.Component {
 
             return ({
                 value: '',
-                // lists: (prevState.value !== '' ? addedEmpty : prevState.lists),
                 lists: addedEmpty,
                 addList: true,
             })

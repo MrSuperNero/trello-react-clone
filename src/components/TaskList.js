@@ -20,7 +20,6 @@ export default class TaskList extends React.Component {
         this.handleComplete = this.handleComplete.bind(this);
         this.handleAddTask = this.handleAddTask.bind(this);
         this.handleChangeValue = this.handleChangeValue.bind(this);
-        this.handleEditTitle = this.handleEditTitle.bind(this);
         this.willEditTitle = this.willEditTitle.bind(this);
         this.doneEditTitle = this.doneEditTitle.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -44,18 +43,15 @@ export default class TaskList extends React.Component {
     }
 
     handleChangeValue(event) {
-        this.setState({ taskValue: event.target.value });
+        const { name, value } = event.target
+        this.setState({ 
+            [name]: value
+        });
     }
 
     willEditTitle() {
         this.setState({
             editTitle: true,
-        });
-    }
-
-    handleEditTitle(event) {
-        this.setState({ 
-            titleValue: event.target.value,
         });
     }
 
@@ -134,9 +130,9 @@ export default class TaskList extends React.Component {
                                 <input 
                                     type="text" 
                                     placeholder="Enter new title..." 
-                                    name="title" 
+                                    name="titleValue" 
                                     maxLength="15"
-                                    onChange={this.handleEditTitle}  
+                                    onChange={this.handleChangeValue}  
                                     value={this.state.titleValue} />
                                 <button 
                                     type="submit" 
@@ -166,7 +162,7 @@ export default class TaskList extends React.Component {
                             <input 
                                 type="text" 
                                 placeholder="Enter new task..." 
-                                name="task" 
+                                name="taskValue" 
                                 onChange={this.handleChangeValue}  
                                 value={this.state.taskValue} />
                             <button 
