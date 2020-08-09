@@ -45,7 +45,7 @@
 }
 
 .title h3 {
-    margin: 5px 20px 0 20px;
+    margin: 10px 20px 0 20px;
     padding: 5px 13px;
     font-size: 1.5em;
 }
@@ -170,13 +170,20 @@
     color: white;
 }
 
-#list-form input[type="text"] {
+#list-title input[type="text"] {
+    font-family: monospace;
     margin-left: 25px;
     margin-right: -10px;
+    background: transparent;
+    border: 0px solid transparent;
+    padding: 9px 5px;
+    border-radius: 0px;
+    border-bottom: 1px solid black;
 }
 
-#list-form button {
+#list-title button {
     padding: 8px;
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
+    background: transparent;
 }

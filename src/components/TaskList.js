@@ -117,7 +117,7 @@ export default class TaskList extends React.Component {
                     <div className="title">
                         {this.state.editTitle ? 
                             <form 
-                                id="list-form"
+                                id="list-title"
                                 name="task"
                                 className="input-form" 
                                 onSubmit={this.handleSubmit} >
