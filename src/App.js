@@ -1,9 +1,7 @@
 import React from 'react';
-// import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import Header from './components/Header';
-import TaskList from './components/TaskList';
+import TaskListContainer from './components/TaskList/TaskListContainer';
 // import * as Lists from './data/todoListData';    // fake data
-// import FontAwesome from 'react-fontawesome';
 import './css/app.css'
 
 
@@ -65,7 +63,7 @@ export default class App extends React.Component {
                             .lists
                             .map
                             (list => 
-                                <TaskList 
+                                <TaskListContainer 
                                     key={list.name} 
                                     numTasks={list.numTasks} 
                                     data={list.data} 
